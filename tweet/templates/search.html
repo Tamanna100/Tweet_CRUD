@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+	<h2>search</h2>
+{% endblock %}
+
+{% block content %}
+	<h2> Your search results</h2>
+
+
+
+
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	<div class="container row gap-4">
+		{% for search in searches %}
+			<div class="card" style="width: 18rem;">
+				{% if search.photo %}
+					<img src="{{ search.photo.url }}" class="card-img-top mt-2" alt="Its ok">
+				{% endif %}
+
+				<div class="card-body">
+					<h5 class="card-title">{{ search.user.username }}</h5>
+					<p class="card-text">{{ search.text }}</p>
+
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}
+
+
+
+
+
+
+

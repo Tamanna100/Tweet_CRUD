@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+	Tweet List
+{% endblock %}
+
+{% block content %}
+	{% if messages %}
+	{% for message in messages %}
+	   <div class="alert alert-{{ message.tags }}">
+	   {{message}}
+	   </div>
+	{% endfor %}
+{% endif %}
+
+	{% if user.is_authenticated %}
+		<div class="card text-bg-warning mb-3 mt-4" style="max-width: 18rem;">
+
+			<div class="card-header">{{ user.username }}</div>
+		</div>
+	{% endif %}
+
+
+	<h1 class="text-center mt-4"> See all the tweets</h1>
+
+	<a class="btn btn-primary mb-5" href="{% url 'tweet_create' %}">Create a tweet</a>
+
+	<div class="container row gap-4 ">
+		{% for tweet in tweets %}
+			<div class="card" style="width: 18rem;">
+				{% if tweet.photo %}
+					<img src="{{ tweet.photo.url }}" class="card-img-top mt-2" alt="Its ok">
+				{% endif %}
+
+				<div class="card-body">
+					<h5 class="card-title">{{ tweet.user.username }}</h5>
+					<p class="card-text">{{ tweet.text }}</p>
+					{% if tweet.user  == user %}
+						<a href="{% url 'tweet_edit'  tweet.id %}" class="btn btn-primary">Edit</a>
+						<a href="{% url 'tweet_delete'  tweet.id %}" class="btn btn-danger">Delete</a>
+					{% endif %}
+
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}
+
+
+

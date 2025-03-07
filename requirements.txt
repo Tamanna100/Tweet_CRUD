@@ -1,0 +1,7 @@
+asgiref==3.8.1
+Django==5.1.6
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+pillow==11.1.0
+sqlparse==0.5.3
+#test comments

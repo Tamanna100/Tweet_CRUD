@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}	
+{% endblock %}
+ 
+{% block content %}
+	<h2>logged out</h2>
+
+	<p>You have been logged out <a class="btn btn-primary" href="{% url 'login' %}">Login here</a></p>
+	<a class="btn btn-primary mx-2 " href="{% url 'tweet_list' %}">Tweet Homepage </a>
+
+{% endblock %}
